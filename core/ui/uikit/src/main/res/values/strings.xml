@@ -1,0 +1,8 @@
+<resources>
+    <string name="sort_option_selector_title">Сортировка</string>
+    <string name="sort_option_selector_ascending">По возрастанию</string>
+    <string name="sort_option_selector_descending">По убыванию</string>
+    <string name="action_apply">Применить</string>
+    <string name="rates_sort_option_name">Название</string>
+    <string name="rates_sort_option_price">Цена</string>
+</resources>

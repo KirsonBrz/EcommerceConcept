@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 26
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.3.2"
+    }
+    namespace 'com.kirson.baseproject.core.ui'
+}
+
+dependencies {
+    implementation project(":navigation")
+
+    // Core Libs
+    api Deps.supportCoreLibs
+    api Deps.supportUiLibs
+
+    //Compose
+    implementation Deps.composeUi
+    implementation Deps.composeMaterial
+    implementation Deps.composeToolingPreview
+    implementation Deps.composeRuntime
+    implementation Deps.composeRuntimeLiveData
+    implementation Deps.composeActivity
+    implementation Deps.composeNavigation
+
+    // Timber
+    implementation Deps.timber
+
+    //Lifecycle + Compose ViewModel
+    implementation Deps.lifecycleViewModelKtx
+    implementation Deps.lifecycleViewModelCompose
+    implementation Deps.lifecycleViewModelSavedState
+    implementation Deps.lifecycle
+
+    // Test
+    testImplementation Deps.testImplementationJunit
+    androidTestImplementation Deps.androidTestImplementationJunit
+    androidTestImplementation Deps.androidTestImplementationEspresso
+    androidTestImplementation Deps.androidTestImplementationComposeUi
+    debugImplementation Deps.debugImplementation
+
+    // accompanist
+    implementation Deps.accompanistInsets
+    implementation Deps.accompanistSystemUiController
+    implementation Deps.accompanistPager
+    implementation Deps.accompanistPagerIndicators
+    implementation Deps.accompanistSwipeRefresh
+    implementation Deps.accompanistFlowLayout
+}
