@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.Color
 
 @Stable
 class AppColors(
+  mainColor: Color,
   backgroundPrimary: Color,
   backgroundSecondary: Color,
   contendPrimary: Color,
@@ -31,7 +32,10 @@ class AppColors(
   black: Color,
   isDark: Boolean,
   shadowColor: Color,
+  tornado1: List<Color>
 ) {
+  var mainColor by mutableStateOf(mainColor)
+    private set
   var backgroundPrimary by mutableStateOf(backgroundPrimary)
     private set
   var backgroundSecondary by mutableStateOf(backgroundSecondary)
@@ -78,8 +82,11 @@ class AppColors(
     private set
   var shadowColor by mutableStateOf(shadowColor)
     private set
+  var tornado1 by mutableStateOf(tornado1)
+    private set
 
   fun update(other: AppColors) {
+    mainColor = other.mainColor
     backgroundPrimary = other.backgroundPrimary
     backgroundSecondary = other.backgroundSecondary
     contendPrimary = other.contendPrimary
@@ -103,5 +110,6 @@ class AppColors(
     black = other.black
     isDark = other.isDark
     shadowColor = other.shadowColor
+    tornado1 = other.tornado1
   }
 }

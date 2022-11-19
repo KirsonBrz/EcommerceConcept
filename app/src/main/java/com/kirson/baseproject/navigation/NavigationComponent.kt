@@ -27,5 +27,6 @@ fun NavigationComponent(
         startDestination = NavTarget.RootModule.route
     ) {
         addMainFeatureGraph { navController.popBackStack() }
+
     }
 }

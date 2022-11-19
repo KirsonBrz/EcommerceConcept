@@ -41,12 +41,21 @@ android {
 dependencies {
     implementation project(":navigation")
     implementation project(":core:domain")
+    implementation project(":core:ui:uikit")
     implementation project(":main:domain")
+    implementation project(":main:data")
 
 
-
-
+    //Compose
+    implementation Deps.composeUi
+    implementation Deps.composeMaterial
+    implementation Deps.composeToolingPreview
+    implementation Deps.composeRuntime
+    implementation Deps.composeRuntimeLiveData
+    implementation Deps.composeActivity
     implementation Deps.composeNavigation
+    implementation Deps.coilCompose
+
 
     //Lifecycle + Compose ViewModel
     implementation Deps.lifecycleViewModelKtx
@@ -57,15 +66,21 @@ dependencies {
 
     // Hilt
     implementation Deps.implementationHilt
+    implementation "androidx.camera:camera-core:1.1.0"
+    implementation "androidx.camera:camera-camera2:1.1.0"
+    implementation "androidx.camera:camera-lifecycle:1.1.0"
+    implementation "androidx.camera:camera-viewfinder:1.3.0-alpha01"
+    implementation "androidx.camera:camera-view:1.1.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-guava:1.6.0-RC"
     kapt Deps.kaptDaggerHilt
     kapt Deps.kaptDaggerHiltAndroid
     implementation Deps.implementationHiltNavigationCompose
 
-
+    implementation "com.google.accompanist:accompanist-permissions:0.27.1"
+    implementation "com.google.accompanist:accompanist-flowlayout:0.27.1"
 
     // Timber
     implementation Deps.timber
-
 
 
     // Test

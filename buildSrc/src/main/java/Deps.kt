@@ -40,6 +40,7 @@ object Deps {
     const val composeActivity = "androidx.activity:activity-compose:1.6.1"
     const val composeNavigation = "androidx.navigation:navigation-compose:2.5.3"
 
+    const val coilCompose = "io.coil-kt:coil-compose:2.2.2"
 
     const val accompanistInsets = "com.google.accompanist:accompanist-insets:$accompanistVersion"
     const val accompanistSystemUiController =

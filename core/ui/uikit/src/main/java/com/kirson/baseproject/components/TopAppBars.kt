@@ -29,171 +29,172 @@ import com.kirson.baseproject.ui.theme.BaseProjectAppTheme
 
 @Composable
 fun TopAppBar(
-  modifier: Modifier = Modifier,
-  title: String?,
-  onNavigationIconClick: () -> Unit,
-  navigationIcon: NavigationIcon = NavigationIcon.ArrowBack,
-  trailingContent: (@Composable () -> Unit)? = null,
+    modifier: Modifier = Modifier,
+    title: String?,
+    onNavigationIconClick: () -> Unit,
+    navigationIcon: NavigationIcon = NavigationIcon.ArrowBack,
+    trailingContent: (@Composable () -> Unit)? = null,
 ) {
-  TopAppBar(
-    modifier = modifier,
-    leftContent = {
-      if (navigationIcon != NavigationIcon.None) {
-        IconButton(onClick = onNavigationIconClick) {
-          Icon(
-            imageVector = if (navigationIcon == NavigationIcon.Close) Icons.Default.Close else Icons.Default.ArrowBack,
-            contentDescription = "back or close icon"
-          )
+    TopAppBar(
+        modifier = modifier,
+        leftContent = {
+            if (navigationIcon != NavigationIcon.None) {
+                IconButton(onClick = onNavigationIconClick) {
+                    Icon(
+                        imageVector = if (navigationIcon == NavigationIcon.Close) Icons.Default.Close else Icons.Default.ArrowBack,
+                        contentDescription = "back or close icon"
+                    )
+                }
+            }
+        },
+        centerContent = {
+            if (title != null) {
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Center,
+                    text = title,
+                    style = BaseProjectAppTheme.typography.title1,
+                )
+            }
+        },
+        rightContent = {
+            trailingContent?.invoke()
         }
-      }
-    },
-    centerContent = {
-      if (title != null) {
-        Text(
-          modifier = Modifier.fillMaxWidth(),
-          textAlign = TextAlign.Center,
-          text = title,
-          style = BaseProjectAppTheme.typography.title1,
-        )
-      }
-    },
-    rightContent = {
-      trailingContent?.invoke()
-    }
-  )
+    )
 }
 
 @Composable
 fun LogoTopAppBar(
-  modifier: Modifier = Modifier,
-  leftContent: @Composable () -> Unit = {},
-  rightContent: @Composable () -> Unit = {},
+    modifier: Modifier = Modifier,
+    leftContent: @Composable () -> Unit = {},
+    rightContent: @Composable () -> Unit = {},
 ) {
-  TopAppBar(
-    modifier = modifier,
-    leftContent = leftContent,
-    centerContent = {
-      Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.Center,
-      ) {
-        Image(
-          painter = painterResource(id = R.drawable.ic_check_24),
-          contentDescription = "logo image",
-        )
-      }
-    },
-    rightContent = rightContent,
-  )
+    TopAppBar(
+        modifier = modifier,
+        leftContent = leftContent,
+        centerContent = {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center,
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_check_24),
+                    contentDescription = "logo image",
+                )
+            }
+        },
+        rightContent = rightContent,
+    )
 }
 
 @Composable
 fun TopAppBar(
-  modifier: Modifier = Modifier,
-  leftContent: @Composable () -> Unit,
-  centerContent: @Composable () -> Unit,
-  rightContent: @Composable () -> Unit,
+    modifier: Modifier = Modifier,
+    leftContent: @Composable () -> Unit,
+    centerContent: @Composable () -> Unit,
+    rightContent: @Composable () -> Unit,
 ) {
-  Layout(
-    modifier = modifier
-      .height(APP_BAR_HEIGHT_DP.dp)
-      .fillMaxWidth(),
-    content = {
-      Box(contentAlignment = Alignment.CenterStart) { leftContent() }
-      Box(contentAlignment = Alignment.CenterStart) { centerContent() }
-      Box(contentAlignment = Alignment.CenterStart) { rightContent() }
+    Layout(
+        modifier = modifier
+            .height(APP_BAR_HEIGHT_DP.dp)
+            .fillMaxWidth(),
+        content = {
+            Box(contentAlignment = Alignment.CenterStart) { leftContent() }
+            Box(contentAlignment = Alignment.CenterStart) { centerContent() }
+            Box(contentAlignment = Alignment.CenterStart) { rightContent() }
+        }
+    ) { measureables, constraints ->
+        val leftPlaceable = measureables[0].measure(constraints.copy(minWidth = 0))
+        val rightPlaceable = measureables[2].measure(constraints.copy(minWidth = 0))
+        val maxSideSlotWidth = maxOf(leftPlaceable.width, rightPlaceable.width)
+        val centerPlaceable = measureables[1].measure(
+            constraints.copy(
+                minWidth = constraints.maxWidth - maxSideSlotWidth * 2,
+                maxWidth = constraints.maxWidth - maxSideSlotWidth * 2
+            )
+        )
+        val maxChildHeight =
+            maxOf(leftPlaceable.height, centerPlaceable.height, rightPlaceable.height)
+        layout(width = constraints.maxWidth, maxChildHeight) {
+            val height = constraints.constrainHeight(maxChildHeight)
+            leftPlaceable.place(x = 0, y = height / 2 - leftPlaceable.height / 2)
+            centerPlaceable.place(x = maxSideSlotWidth, y = height / 2 - centerPlaceable.height / 2)
+            rightPlaceable.place(
+                x = maxSideSlotWidth + centerPlaceable.width,
+                y = height / 2 - rightPlaceable.height / 2
+            )
+        }
     }
-  ) { measureables, constraints ->
-    val leftPlaceable = measureables[0].measure(constraints.copy(minWidth = 0))
-    val rightPlaceable = measureables[2].measure(constraints.copy(minWidth = 0))
-    val maxSideSlotWidth = maxOf(leftPlaceable.width, rightPlaceable.width)
-    val centerPlaceable = measureables[1].measure(
-      constraints.copy(
-        minWidth = constraints.maxWidth - maxSideSlotWidth * 2,
-        maxWidth = constraints.maxWidth - maxSideSlotWidth * 2
-      )
-    )
-    val maxChildHeight = maxOf(leftPlaceable.height, centerPlaceable.height, rightPlaceable.height)
-    layout(width = constraints.maxWidth, maxChildHeight) {
-      val height = constraints.constrainHeight(maxChildHeight)
-      leftPlaceable.place(x = 0, y = height / 2 - leftPlaceable.height / 2)
-      centerPlaceable.place(x = maxSideSlotWidth, y = height / 2 - centerPlaceable.height / 2)
-      rightPlaceable.place(
-        x = maxSideSlotWidth + centerPlaceable.width,
-        y = height / 2 - rightPlaceable.height / 2
-      )
-    }
-  }
 }
 
 enum class NavigationIcon {
-  Close,
-  ArrowBack,
-  None,
+    Close,
+    ArrowBack,
+    None,
 }
 
 @Suppress("UnusedPrivateMember")
 @Preview(showBackground = true, widthDp = 360)
 @Composable
 private fun TopAppBarPreview() {
-  BaseProjectAppTheme {
-    TopAppBar(
-      leftContent = {
-        Text(
-          modifier = Modifier.padding(horizontal = 24.dp),
-          text = "hello",
-          style = BaseProjectAppTheme.typography.caption1
+    BaseProjectAppTheme {
+        TopAppBar(
+            leftContent = {
+                Text(
+                    modifier = Modifier.padding(horizontal = 24.dp),
+                    text = "hello",
+                    style = BaseProjectAppTheme.typography.caption1
+                )
+            },
+            centerContent = {
+                Text(
+                    text = "Centered title",
+                    textAlign = TextAlign.Center,
+                    style = BaseProjectAppTheme.typography.title1,
+                )
+            },
+            rightContent = {
+                Text(
+                    modifier = Modifier.padding(horizontal = 24.dp),
+                    text = "hello longer",
+                    style = BaseProjectAppTheme.typography.caption1
+                )
+            }
         )
-      },
-      centerContent = {
-        Text(
-          text = "Centered title",
-          textAlign = TextAlign.Center,
-          style = BaseProjectAppTheme.typography.title1,
-        )
-      },
-      rightContent = {
-        Text(
-          modifier = Modifier.padding(horizontal = 24.dp),
-          text = "hello longer",
-          style = BaseProjectAppTheme.typography.caption1
-        )
-      }
-    )
-  }
+    }
 }
 
 @Suppress("UnusedPrivateMember")
 @Preview(showBackground = true, widthDp = 360)
 @Composable
 private fun TopAppBarPreviewWithNavigation() {
-  BaseProjectAppTheme {
-    Column {
-      TopAppBar(
-        title = "Title",
-        onNavigationIconClick = {},
-        navigationIcon = NavigationIcon.Close
-      )
-      TopAppBar(
-        title = "Title",
-        onNavigationIconClick = {},
-        navigationIcon = NavigationIcon.None
-      )
-      Spacer(modifier = Modifier.height(16.dp))
-      TopAppBar(
-        title = null,
-        onNavigationIconClick = {},
-        navigationIcon = NavigationIcon.ArrowBack
-      )
-      Spacer(modifier = Modifier.height(16.dp))
-      TopAppBar(
-        title = "Title",
-        onNavigationIconClick = {},
-        navigationIcon = NavigationIcon.Close,
-        trailingContent = {}
-      )
+    BaseProjectAppTheme {
+        Column {
+            TopAppBar(
+                title = "Title",
+                onNavigationIconClick = {},
+                navigationIcon = NavigationIcon.Close
+            )
+            TopAppBar(
+                title = "Title",
+                onNavigationIconClick = {},
+                navigationIcon = NavigationIcon.None
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            TopAppBar(
+                title = null,
+                onNavigationIconClick = {},
+                navigationIcon = NavigationIcon.ArrowBack
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            TopAppBar(
+                title = "Title",
+                onNavigationIconClick = {},
+                navigationIcon = NavigationIcon.Close,
+                trailingContent = {}
+            )
+        }
     }
-  }
 }
 
 const val APP_BAR_HEIGHT_DP = 52

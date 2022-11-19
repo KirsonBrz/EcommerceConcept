@@ -42,6 +42,12 @@ dependencies {
 
 
     implementation project(":main:data")
+    implementation project(":core:domain")
+
+    //Retrofit
+    implementation Deps.retrofit
+    implementation Deps.retrofitJson
+    implementation Deps.okhttp3
 
     // Hilt
     implementation Deps.implementationHilt

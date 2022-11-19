@@ -1,7 +1,9 @@
 package com.kirson.baseproject.repository
 
 
+import com.kirson.baseproject.entity.APIResponse
 import com.kirson.baseproject.repository.dataSource.MainRemoteDataSource
+import retrofit2.Response
 
 class MainRepositoryImpl(
     private val mainRemoteDataSource: MainRemoteDataSource,
@@ -10,8 +12,8 @@ class MainRepositoryImpl(
 ) : MainRepository {
 
 
-    override suspend fun getAllData(): String {
-        TODO("Not yet implemented")
-    }
+    override suspend fun getAllData(): Response<APIResponse> =
+        mainRemoteDataSource.getData()
+
 
 }
