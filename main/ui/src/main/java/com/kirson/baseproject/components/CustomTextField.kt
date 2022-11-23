@@ -1,4 +1,4 @@
-package com.kirson.baseproject.component
+package com.kirson.baseproject.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -19,7 +19,7 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.TextUnit
 
 @Composable
-fun CustomTextField(
+internal fun CustomTextField(
     modifier: Modifier = Modifier,
     leadingIcon: (@Composable () -> Unit)? = null,
     trailingIcon: (@Composable () -> Unit)? = null,
@@ -27,12 +27,13 @@ fun CustomTextField(
     fontSize: TextUnit = MaterialTheme.typography.bodyMedium.fontSize
 ) {
     var text by rememberSaveable { mutableStateOf("") }
-    BasicTextField(modifier = modifier
-        .background(
-            MaterialTheme.colorScheme.surface,
-            MaterialTheme.shapes.small,
-        )
-        .fillMaxWidth(),
+    BasicTextField(
+        modifier = modifier
+            .background(
+                MaterialTheme.colorScheme.surface,
+                MaterialTheme.shapes.small,
+            )
+            .fillMaxWidth(),
         value = text,
         onValueChange = {
             text = it

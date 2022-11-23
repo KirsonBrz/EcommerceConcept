@@ -1,4 +1,4 @@
-package com.kirson.baseproject.component
+package com.kirson.baseproject.components
 
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.FocusMeteringAction
@@ -23,7 +23,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import kotlinx.coroutines.guava.await
 
 @Composable
-fun CameraPreview(
+internal fun CameraPreview(
     modifier: Modifier = Modifier,
     cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA,
     implementationMode: PreviewView.ImplementationMode = PreviewView.ImplementationMode.COMPATIBLE,

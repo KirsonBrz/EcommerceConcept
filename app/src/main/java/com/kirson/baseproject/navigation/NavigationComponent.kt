@@ -23,10 +23,13 @@ fun NavigationComponent(
     }
 
     NavHost(
-        navController = navController,
-        startDestination = NavTarget.RootModule.route
+        navController = navController, startDestination = NavTarget.RootModule.route
     ) {
-        addMainFeatureGraph { navController.popBackStack() }
+        addMainFeatureGraph(
+            popBackStack = { navController.popBackStack() },
+            onPhoneDetails = {
+                navController.navigate(NavTarget.Details.route)
+            })
 
     }
 }

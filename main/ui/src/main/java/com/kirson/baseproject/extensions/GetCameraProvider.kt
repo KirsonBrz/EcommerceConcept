@@ -1,4 +1,4 @@
-package com.kirson.baseproject
+package com.kirson.baseproject.extensions
 
 import android.content.Context
 import androidx.camera.lifecycle.ProcessCameraProvider

@@ -1,5 +1,8 @@
 package com.kirson.baseproject.components
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Card
@@ -16,44 +19,54 @@ import com.kirson.baseproject.navigation.NavTarget
 import com.kirson.baseproject.ui.theme.BaseProjectAppTheme
 
 @Composable
-fun BottomNavigationBar(navController: NavController) {
-  val items = listOf(
-    NavTarget.Main,
-    NavTarget.Cart,
-    NavTarget.Favourites,
-    NavTarget.Profile
-  )
-  Card(shape = MaterialTheme.shapes.large) {
-    BottomNavigation(
-      backgroundColor = BaseProjectAppTheme.colors.bottomMenuBackground,
-      contentColor = BaseProjectAppTheme.colors.contendPrimary,
-    ) {
-      val navBackStackEntry by navController.currentBackStackEntryAsState()
-      val currentRoute = navBackStackEntry?.destination?.route
-      items.forEach { item ->
-        BottomNavigationItem(
-          icon = { Icon(painterResource(id = item.icon), contentDescription = item.route) },
-          label = { Text(text = item.route) },
-          selectedContentColor = Color.White,
-          unselectedContentColor = Color.White.copy(0.4f),
-          alwaysShowLabel = false,
-          selected = currentRoute == item.route,
-          onClick = {
-            navController.navigate(item.route) {
-              navController.graph.startDestinationRoute?.let { route ->
-                popUpTo(route) {
-                  saveState = true
+fun BottomNavigationBar(
+    navController: NavController,
+    bottomBarState: Boolean
+) {
+    val items = listOf(
+        NavTarget.Main,
+        NavTarget.Cart,
+        NavTarget.Favourites,
+        NavTarget.Profile
+    )
+    AnimatedVisibility(
+        visible = bottomBarState,
+        enter = slideInVertically(initialOffsetY = { it }),
+        exit = slideOutVertically(targetOffsetY = { it }),
+        content = {
+            Card(shape = MaterialTheme.shapes.large) {
+                BottomNavigation(
+                    backgroundColor = BaseProjectAppTheme.colors.bottomMenuBackground,
+                    contentColor = BaseProjectAppTheme.colors.contendPrimary,
+                ) {
+                    val navBackStackEntry by navController.currentBackStackEntryAsState()
+                    val currentRoute = navBackStackEntry?.destination?.route
+                    items.forEach { item ->
+                        BottomNavigationItem(icon = {
+                            Icon(
+                                painterResource(id = item.icon), contentDescription = item.route
+                            )
+                        },
+                            label = { Text(text = item.route) },
+                            selectedContentColor = Color.White,
+                            unselectedContentColor = Color.White.copy(0.4f),
+                            alwaysShowLabel = false,
+                            selected = currentRoute == item.route,
+                            onClick = {
+                                navController.navigate(item.route) {
+                                    navController.graph.startDestinationRoute?.let { route ->
+                                        popUpTo(route) {
+                                            saveState = true
+                                        }
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
+                            })
+                    }
                 }
-              }
-              launchSingleTop = true
-              restoreState = true
             }
-          }
-        )
-      }
-    }
-
-  }
+        })
 
 
 }

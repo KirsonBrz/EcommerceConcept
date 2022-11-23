@@ -1,4 +1,4 @@
-package com.kirson.baseproject.component
+package com.kirson.baseproject.components
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -15,21 +15,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.kirson.baseproject.State
-import com.kirson.baseproject.components.BottomSheetExpandHideEffect
 import com.kirson.baseproject.core.entity.SortConfiguration
+import com.kirson.baseproject.mainfeature.State
 import com.kirson.baseproject.ui.theme.BaseProjectAppTheme
 import com.kirson.baseproject.ui.theme.Shapes
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MainModalBottomSheetScaffold(
+internal fun MainModalBottomSheetScaffold(
     state: State,
     content: @Composable () -> Unit,
     applySortConfiguration: (SortConfiguration) -> Unit,
     dismissSortConfigurationDialog: () -> Unit
 ) {
-    val sheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden,
+    val sheetState = rememberModalBottomSheetState(
+        initialValue = ModalBottomSheetValue.Hidden,
         confirmStateChange = { sheetValue ->
             if (sheetValue == ModalBottomSheetValue.Hidden) {
                 dismissSortConfigurationDialog()

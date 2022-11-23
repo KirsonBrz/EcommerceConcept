@@ -3,7 +3,6 @@ package com.kirson.baseproject.navigation
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import com.kirson.baseproject.component.PhoneDetail
 
 @Composable
 fun CartFeatureView() {
@@ -12,9 +11,7 @@ fun CartFeatureView() {
 
 @Composable
 fun FavouritesFeatureView() {
-    PhoneDetail {
-
-    }
+    Text("FAVOURITE FEATURE VIEW")
 }
 
 @Composable

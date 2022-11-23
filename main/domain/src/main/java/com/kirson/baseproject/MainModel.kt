@@ -1,14 +1,17 @@
 package com.kirson.baseproject
 
-import com.kirson.baseproject.entity.APIResponse
+import com.kirson.baseproject.entity.APIPhoneDetails
+import com.kirson.baseproject.entity.APIPhonesList
 import kotlinx.coroutines.flow.Flow
 
 
 interface MainModel {
 
-    val allData: Flow<APIResponse>
+    val allPhones: Flow<APIPhonesList>
+    val phoneDetails: Flow<APIPhoneDetails>
 
 
-    suspend fun getAllData(): APIResponse?
+    suspend fun getAllPhones(): APIPhonesList?
+    suspend fun getPhoneDetails(): APIPhoneDetails?
 
 }

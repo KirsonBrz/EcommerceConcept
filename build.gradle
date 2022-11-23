@@ -1,8 +1,13 @@
 buildscript {
+
     repositories {
         google()
         mavenCentral()
+        maven { url "https://jitpack.io" }
+
     }
+
+
     dependencies {
         classpath Deps.androidGradlePlugin
         classpath Deps.androidDaggerHiltPlugin

@@ -1,12 +1,11 @@
-package com.kirson.baseproject
+package com.kirson.baseproject.mainfeature
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
+import com.kirson.baseproject.MainModel
 import com.kirson.baseproject.core.base.BaseViewModel
 import com.kirson.baseproject.core.entity.SortConfiguration
-import com.kirson.baseproject.entity.CategoryModel
-import com.kirson.baseproject.main.ui.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
@@ -35,16 +34,16 @@ class MainFeatureViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(IO) {
-            mainModel.getAllData()
+            mainModel.getAllPhones()
             observeData()
         }
     }
 
     fun observeData() {
         viewModelScope.launch(IO) {
-            val data = mainModel.allData
+            val phones = mainModel.allPhones
 
-            data.flowOn(IO).onStart {
+            phones.flowOn(IO).onStart {
                 withContext(Dispatchers.Main) {
                     _uiState.value = MainFeatureUIState.Loading(
                         State().copy(
@@ -66,16 +65,27 @@ class MainFeatureViewModel @Inject constructor(
                     )
                 )
 
-            }.flowOn(IO).collect {
+            }.flowOn(IO).collect { phonesList ->
                 _uiState.value = MainFeatureUIState.Loaded(
                     State().copy(
-                        categories = getCategories(),
-                        homeStorePhones = it.home_store,
-                        bestSellersPhones = it.best_seller,
+                        homeStorePhones = phonesList.home_store,
+                        bestSellersPhones = phonesList.best_seller,
                         refreshInProgress = false
                     )
                 )
+
             }
+
+//            val details = mainModel.phoneDetails
+//
+//            details.flowOn(IO).collect { phoneDetails ->
+//                _uiState.value = MainFeatureUIState.Loaded(
+//                    State().copy(
+//                        phoneDetails = phoneDetails,
+//                        refreshInProgress = false
+//                    )
+//                )
+//            }
         }
     }
 
@@ -87,14 +97,6 @@ class MainFeatureViewModel @Inject constructor(
         }
     }
 
-    private fun getCategories() = listOf(
-        CategoryModel("Phones", R.drawable.phone_24, false),
-        CategoryModel("Computer", R.drawable.computer_24, false),
-        CategoryModel("Health", R.drawable.health_24, false),
-        CategoryModel("Books", R.drawable.books_24, false),
-        CategoryModel("Tools", R.drawable.tools_24, false),
-        CategoryModel("TV", R.drawable.tv_24, false)
-    )
 
     fun changeSorting() {
         _uiStateFlow.update {
@@ -104,14 +106,6 @@ class MainFeatureViewModel @Inject constructor(
         }
     }
 
-    fun changeCategory(category: CategoryModel) {
-        _uiStateFlow.update {
-            it.copy(
-                selectedCategory = category
-            )
-        }
-
-    }
 
     fun applySortConfiguration(sortConfiguration: SortConfiguration) {
         viewModelScope.launch {

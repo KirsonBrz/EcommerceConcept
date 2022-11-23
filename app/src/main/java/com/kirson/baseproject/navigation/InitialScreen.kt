@@ -23,7 +23,7 @@ import com.kirson.baseproject.ui.theme.BaseProjectAppTheme
 import kotlinx.coroutines.delay
 
 @Composable
-fun LandingScreen(modifier: Modifier = Modifier, onTimeout: () -> Unit) {
+fun InitialScreen(modifier: Modifier = Modifier, onTimeout: () -> Unit) {
     Box(
         modifier = modifier.fillMaxSize()
     )
@@ -63,7 +63,7 @@ fun LandingScreen(modifier: Modifier = Modifier, onTimeout: () -> Unit) {
 
 
         LaunchedEffect(true) {
-            delay(4000)
+            delay(1300)
             currentOnTimeout()
         }
 

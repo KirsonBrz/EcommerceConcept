@@ -1,4 +1,4 @@
-package com.kirson.baseproject.component
+package com.kirson.baseproject.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -9,7 +9,7 @@ import com.kirson.baseproject.core.entity.SortConfiguration
 import com.kirson.baseproject.components.sorting.SortOptionSelector as SortOptionSelectorCore
 
 @Composable
-fun SortOptionSelector(
+internal fun SortOptionSelector(
     modifier: Modifier = Modifier,
     sortConfiguration: SortConfiguration,
     onPropertyClick: (property: SortConfiguration.Property) -> Unit,

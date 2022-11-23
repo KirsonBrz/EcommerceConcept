@@ -1,4 +1,4 @@
-package com.kirson.baseproject.component
+package com.kirson.baseproject.components
 
 
 import android.Manifest
@@ -47,7 +47,7 @@ import com.kirson.baseproject.ui.theme.BaseProjectAppTheme
     ExperimentalPermissionsApi::class
 )
 @Composable
-fun GlobalSearchComponent() {
+internal fun GlobalSearchComponent() {
     val (value, onValueChange) = remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
     val bitmap = remember { mutableStateOf(null) }

@@ -73,6 +73,9 @@ dependencies {
     implementation Deps.composeActivity
     implementation Deps.composeNavigation
 
+    //Rating bar
+    implementation "com.github.a914-gowtham:compose-ratingbar:1.2.4"
+
     // Timber
     implementation Deps.timber
 

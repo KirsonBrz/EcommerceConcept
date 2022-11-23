@@ -1,7 +1,8 @@
 package com.kirson.baseproject.repository
 
 
-import com.kirson.baseproject.entity.APIResponse
+import com.kirson.baseproject.entity.APIPhoneDetails
+import com.kirson.baseproject.entity.APIPhonesList
 import com.kirson.baseproject.repository.dataSource.MainRemoteDataSource
 import retrofit2.Response
 
@@ -12,8 +13,11 @@ class MainRepositoryImpl(
 ) : MainRepository {
 
 
-    override suspend fun getAllData(): Response<APIResponse> =
-        mainRemoteDataSource.getData()
+    override suspend fun getAllPhones(): Response<APIPhonesList> =
+        mainRemoteDataSource.getPhones()
+
+    override suspend fun getPhoneDetails(): Response<APIPhoneDetails> =
+        mainRemoteDataSource.getPhoneDetails()
 
 
 }
