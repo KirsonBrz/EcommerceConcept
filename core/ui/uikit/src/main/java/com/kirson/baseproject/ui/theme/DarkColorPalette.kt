@@ -1,7 +1,8 @@
 package com.kirson.baseproject.ui.theme
 
 internal val DarkColorPalette = AppColors(
-    mainColor = Red1,
+    primaryColor = Red1,
+    secondaryColor = Blue1,
     backgroundPrimary = Dark1,
     backgroundSecondary = Blue1,
     contendPrimary = Dark3,

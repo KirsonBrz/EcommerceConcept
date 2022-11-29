@@ -2,7 +2,7 @@ package com.kirson.baseproject.di
 
 import com.kirson.baseproject.MainModel
 import com.kirson.baseproject.MainModelImpl
-import com.kirson.baseproject.repository.MainRepository
+import com.kirson.baseproject.MainRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

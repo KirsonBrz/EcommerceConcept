@@ -7,6 +7,7 @@ data class SortConfiguration(
   enum class Property {
     Name,
     Value,
+      Size
   }
 
   enum class SortDirection {

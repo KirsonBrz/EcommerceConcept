@@ -5,8 +5,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 
 @Composable
-fun CartFeatureView() {
-    Text("CART FEATURE VIEW")
+fun ShoppingFeatureView() {
+    Text("SHOPPING FEATURE VIEW")
 }
 
 @Composable

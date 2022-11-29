@@ -29,7 +29,11 @@ fun NavigationComponent(
             popBackStack = { navController.popBackStack() },
             onPhoneDetails = {
                 navController.navigate(NavTarget.Details.route)
-            })
+            },
+            onCart = {
+                navController.navigate(NavTarget.Cart.route)
+            }
+        )
 
     }
 }

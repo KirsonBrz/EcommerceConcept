@@ -58,18 +58,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.kirson.baseproject.entity.BestSeller
-import com.kirson.baseproject.entity.HomeStore
-import com.kirson.baseproject.extensions.isHalfPastItemLeft
-import com.kirson.baseproject.extensions.isHalfPastItemRight
-import com.kirson.baseproject.extensions.scrollBasic
+import com.kirson.baseproject.entity.BestSellerDomainModel
+import com.kirson.baseproject.entity.HomeStoreDomainModel
 import com.kirson.baseproject.ui.theme.BaseProjectAppTheme
+import com.kirson.baseproject.utils.isHalfPastItemLeft
+import com.kirson.baseproject.utils.isHalfPastItemRight
+import com.kirson.baseproject.utils.scrollBasic
 
 @Composable
 internal fun HomeStoreList(
     modifier: Modifier = Modifier,
-    homeStore: List<HomeStore>,
-    onHomeStoreClick: (HomeStore) -> Unit
+    homeStore: List<HomeStoreDomainModel>,
+    onHomeStoreClick: (HomeStoreDomainModel) -> Unit
 ) {
     Column {
         Box(modifier = Modifier.fillMaxWidth()) {
@@ -78,7 +78,7 @@ internal fun HomeStoreList(
                 text = "Hot sales",
                 fontSize = 25.sp,
                 fontWeight = FontWeight.W700,
-                color = BaseProjectAppTheme.colors.backgroundSecondary,
+                color = BaseProjectAppTheme.colors.secondaryColor,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .padding(start = 5.dp, bottom = 10.dp)
@@ -93,7 +93,7 @@ internal fun HomeStoreList(
                     text = "see more",
                     fontSize = 15.sp,
                     fontWeight = FontWeight.W400,
-                    color = BaseProjectAppTheme.colors.mainColor,
+                    color = BaseProjectAppTheme.colors.primaryColor,
                     textAlign = TextAlign.Center
                 )
             }
@@ -146,7 +146,7 @@ internal fun HomeStoreList(
                                 .padding(top = 14.dp, start = 25.dp)
                                 .clip(CircleShape)
                                 .size(27.dp),
-                            color = BaseProjectAppTheme.colors.mainColor
+                            color = BaseProjectAppTheme.colors.primaryColor
                         ) {
                             Text(
                                 text = "New",
@@ -172,7 +172,7 @@ internal fun HomeStoreList(
                             text = "Buy now!",
                             fontSize = 11.sp,
                             fontWeight = FontWeight.W700,
-                            color = BaseProjectAppTheme.colors.backgroundSecondary,
+                            color = BaseProjectAppTheme.colors.secondaryColor,
                             textAlign = TextAlign.Center,
                             modifier = Modifier.padding(4.dp)
                         )
@@ -202,8 +202,8 @@ internal fun HomeStoreList(
 @Composable
 internal fun BestSellersList(
     modifier: Modifier = Modifier,
-    bestSellers: List<BestSeller>,
-    onBestSellerClick: (BestSeller) -> Unit,
+    bestSellers: List<BestSellerDomainModel>,
+    onBestSellerClick: (BestSellerDomainModel) -> Unit,
     top: @Composable () -> Unit,
 ) {
     Column {
@@ -223,7 +223,7 @@ internal fun BestSellersList(
                             text = "Best Sellers",
                             fontSize = 25.sp,
                             fontWeight = FontWeight.W700,
-                            color = BaseProjectAppTheme.colors.backgroundSecondary,
+                            color = BaseProjectAppTheme.colors.secondaryColor,
                             textAlign = TextAlign.Center,
                             modifier = Modifier
                                 .padding(start = 5.dp)
@@ -239,7 +239,7 @@ internal fun BestSellersList(
                                 text = "see more",
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.W400,
-                                color = BaseProjectAppTheme.colors.mainColor,
+                                color = BaseProjectAppTheme.colors.primaryColor,
                                 textAlign = TextAlign.Center
                             )
 
@@ -329,7 +329,7 @@ internal fun BestSellersList(
                             text = "$${phone.discount_price}",
                             fontSize = 16.sp,
                             fontWeight = FontWeight.W700,
-                            color = BaseProjectAppTheme.colors.backgroundSecondary,
+                            color = BaseProjectAppTheme.colors.secondaryColor,
                             textAlign = TextAlign.Center
                         )
                         Spacer(modifier = Modifier.width(7.dp))
@@ -348,7 +348,7 @@ internal fun BestSellersList(
                         text = phone.title,
                         fontSize = 10.sp,
                         fontWeight = FontWeight.W400,
-                        color = BaseProjectAppTheme.colors.backgroundSecondary,
+                        color = BaseProjectAppTheme.colors.secondaryColor,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .padding(start = 21.dp, bottom = 15.dp)

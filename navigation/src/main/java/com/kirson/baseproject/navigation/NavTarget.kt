@@ -6,11 +6,15 @@ sealed class NavTarget(val route: String, val icon: Int) {
     object Main :
         NavTarget(ModuleRoutes.MainFeature.route, ModuleRoutes.MainFeature.icon)
 
+    object Details :
+        NavTarget(ModuleRoutes.DetailsFeature.route, ModuleRoutes.DetailsFeature.icon)
+
     object Cart :
         NavTarget(ModuleRoutes.CartFeature.route, ModuleRoutes.CartFeature.icon)
 
-    object Details :
-        NavTarget(ModuleRoutes.DetailsFeature.route, ModuleRoutes.DetailsFeature.icon)
+    object Shopping :
+        NavTarget(ModuleRoutes.ShoppingFeature.route, ModuleRoutes.ShoppingFeature.icon)
+
 
     object Favourites :
         NavTarget(ModuleRoutes.FavouritesFeature.route, ModuleRoutes.FavouritesFeature.icon)
@@ -29,10 +33,14 @@ enum class ModuleRoutes(val route: String, val icon: Int) {
     ),
     DetailsFeature(
         "Product Details",
-        drawable.cart_24
+        drawable.main_24
     ),
     CartFeature(
         "My Cart",
+        drawable.main_24
+    ),
+    ShoppingFeature(
+        "Shopping",
         drawable.cart_24
     ),
     FavouritesFeature(

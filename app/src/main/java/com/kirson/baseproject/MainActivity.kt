@@ -62,6 +62,7 @@ fun MainScreenContent() {
 
     bottomBarState = when (navBackStackEntry?.destination?.route) {
         NavTarget.Details.route -> false // on this screen bottom bar should be hidden
+        NavTarget.Cart.route -> false // on this screen bottom bar should be hidden
         else -> true // in all other cases show bottom bar
     }
 

@@ -44,6 +44,9 @@ dependencies {
     api Deps.supportCoreLibs
     api Deps.supportUiLibs
 
+    // Hilt
+    implementation Deps.implementationHiltNavigationCompose
+
     //Compose
     implementation Deps.composeUi
     implementation Deps.composeMaterial
@@ -53,14 +56,12 @@ dependencies {
     implementation Deps.composeActivity
     implementation Deps.composeNavigation
 
-    // Timber
-    implementation Deps.timber
 
-    //Lifecycle + Compose ViewModel
-    implementation Deps.lifecycleViewModelKtx
-    implementation Deps.lifecycleViewModelCompose
-    implementation Deps.lifecycleViewModelSavedState
-    implementation Deps.lifecycle
+    //Accompanist
+    implementation Deps.accompanistSwipeRefresh
+    implementation Deps.accompanistInsets
+    implementation Deps.accompanistSystemUiController
+
 
     // Test
     testImplementation Deps.testImplementationJunit
@@ -69,11 +70,5 @@ dependencies {
     androidTestImplementation Deps.androidTestImplementationComposeUi
     debugImplementation Deps.debugImplementation
 
-    // accompanist
-    implementation Deps.accompanistInsets
-    implementation Deps.accompanistSystemUiController
-    implementation Deps.accompanistPager
-    implementation Deps.accompanistPagerIndicators
-    implementation Deps.accompanistSwipeRefresh
-    implementation Deps.accompanistFlowLayout
+
 }

@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-kapt'
 }
 
+
 android {
     compileSdk 33
 
@@ -42,27 +43,19 @@ android {
 
 dependencies {
 
+    implementation project(":core:data")
 
-
-    // Core Libs
-    api Deps.supportCoreLibs
-    api Deps.supportUiLibs
-
-    // Hilt
-    implementation Deps.implementationHilt
-    kapt Deps.kaptDaggerHilt
 
     //Retrofit
     implementation Deps.retrofit
     implementation Deps.retrofitJson
     implementation Deps.okhttp3
 
-    // Test
-    testImplementation Deps.testImplementationJunit
-    androidTestImplementation Deps.androidTestImplementationJunit
-    androidTestImplementation Deps.androidTestImplementationEspresso
-    androidTestImplementation Deps.androidTestImplementationComposeUi
-    debugImplementation Deps.debugImplementation
+    // Hilt
+    implementation Deps.implementationHilt
+    kapt Deps.kaptDaggerHilt
+    kapt Deps.kaptDaggerHiltAndroid
+    implementation Deps.implementationHiltNavigationCompose
 
 
 }

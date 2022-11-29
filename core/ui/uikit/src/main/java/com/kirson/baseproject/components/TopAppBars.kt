@@ -99,9 +99,9 @@ fun TopAppBar(
             .height(APP_BAR_HEIGHT_DP.dp)
             .fillMaxWidth(),
         content = {
-            Box(contentAlignment = Alignment.CenterStart) { leftContent() }
-            Box(contentAlignment = Alignment.CenterStart) { centerContent() }
-            Box(contentAlignment = Alignment.CenterStart) { rightContent() }
+            Box(contentAlignment = Alignment.Center) { leftContent() }
+            Box(contentAlignment = Alignment.Center) { centerContent() }
+            Box(contentAlignment = Alignment.Center) { rightContent() }
         }
     ) { measureables, constraints ->
         val leftPlaceable = measureables[0].measure(constraints.copy(minWidth = 0))

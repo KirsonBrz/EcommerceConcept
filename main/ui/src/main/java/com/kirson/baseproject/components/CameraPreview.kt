@@ -23,7 +23,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import kotlinx.coroutines.guava.await
 
 @Composable
-internal fun CameraPreview(
+fun CameraPreview(
     modifier: Modifier = Modifier,
     cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA,
     implementationMode: PreviewView.ImplementationMode = PreviewView.ImplementationMode.COMPATIBLE,

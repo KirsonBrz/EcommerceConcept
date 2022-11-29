@@ -36,15 +36,16 @@ fun Spinner(
   Box(modifier = modifier.wrapContentSize(Alignment.TopStart)) {
     Row(
       modifier = modifier
-        .clickable { expanded = true }
-        .padding(8.dp)
-        .wrapContentSize(),
+          .clickable { expanded = true }
+          .padding(8.dp)
+          .wrapContentSize(),
       verticalAlignment = Alignment.CenterVertically
     ) {
       Text(selectedText)
       Icon(
         painter = painterResource(id = R.drawable.ic_arrows_up_down_selector_left_16),
         contentDescription = "select base currency"
+
       )
     }
     DropdownMenu(
@@ -60,6 +61,7 @@ fun Spinner(
             expanded = false
           }) {
           dropdownItemFactory(element, index)
+
         }
       }
     }

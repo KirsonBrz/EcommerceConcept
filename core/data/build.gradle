@@ -38,40 +38,7 @@ android {
 
 dependencies {
 
-    // Core Libs
-    api Deps.supportCoreLibs
-    api Deps.supportUiLibs
+    implementation project(":core:domain")
 
-    //Compose
-    implementation Deps.composeUi
-    implementation Deps.composeMaterial
-    implementation Deps.composeToolingPreview
-    implementation Deps.composeRuntime
-    implementation Deps.composeRuntimeLiveData
-    implementation Deps.composeActivity
-    implementation Deps.composeNavigation
 
-    // Timber
-    implementation Deps.timber
-
-    //Lifecycle + Compose ViewModel
-    implementation Deps.lifecycleViewModelKtx
-    implementation Deps.lifecycleViewModelCompose
-    implementation Deps.lifecycleViewModelSavedState
-    implementation Deps.lifecycle
-
-    // Test
-    testImplementation Deps.testImplementationJunit
-    androidTestImplementation Deps.androidTestImplementationJunit
-    androidTestImplementation Deps.androidTestImplementationEspresso
-    androidTestImplementation Deps.androidTestImplementationComposeUi
-    debugImplementation Deps.debugImplementation
-
-    // accompanist
-    implementation Deps.accompanistInsets
-    implementation Deps.accompanistSystemUiController
-    implementation Deps.accompanistPager
-    implementation Deps.accompanistPagerIndicators
-    implementation Deps.accompanistSwipeRefresh
-    implementation Deps.accompanistFlowLayout
 }

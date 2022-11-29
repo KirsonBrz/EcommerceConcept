@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.kirson.baseproject.core.entity.SortConfiguration
-import com.kirson.baseproject.mainfeature.State
+import com.kirson.baseproject.screens.explorer.State
 import com.kirson.baseproject.ui.theme.BaseProjectAppTheme
 import com.kirson.baseproject.ui.theme.Shapes
 

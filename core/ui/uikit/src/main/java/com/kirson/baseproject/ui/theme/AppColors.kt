@@ -8,17 +8,18 @@ import androidx.compose.ui.graphics.Color
 
 @Stable
 class AppColors(
-  mainColor: Color,
-  backgroundPrimary: Color,
-  backgroundSecondary: Color,
-  contendPrimary: Color,
-  contendSecondary: Color,
-  contendTertiary: Color,
-  contendAccentPrimary: Color,
-  contendAccentSecondary: Color,
-  contendAccentTertiary: Color,
-  textPrimary: Color,
-  textSecondary: Color,
+    primaryColor: Color,
+    secondaryColor: Color,
+    backgroundPrimary: Color,
+    backgroundSecondary: Color,
+    contendPrimary: Color,
+    contendSecondary: Color,
+    contendTertiary: Color,
+    contendAccentPrimary: Color,
+    contendAccentSecondary: Color,
+    contendAccentTertiary: Color,
+    textPrimary: Color,
+    textSecondary: Color,
   textTertiary: Color,
   indicatorContendError: Color,
   indicatorContendDone: Color,
@@ -34,17 +35,19 @@ class AppColors(
   shadowColor: Color,
   tornado1: List<Color>
 ) {
-  var mainColor by mutableStateOf(mainColor)
-    private set
-  var backgroundPrimary by mutableStateOf(backgroundPrimary)
-    private set
-  var backgroundSecondary by mutableStateOf(backgroundSecondary)
-    private set
-  var contendPrimary by mutableStateOf(contendPrimary)
-    private set
-  var contendSecondary by mutableStateOf(contendSecondary)
-    private set
-  var contendTertiary by mutableStateOf(contendTertiary)
+    var primaryColor by mutableStateOf(primaryColor)
+        private set
+    var secondaryColor by mutableStateOf(secondaryColor)
+        private set
+    var backgroundPrimary by mutableStateOf(backgroundPrimary)
+        private set
+    var backgroundSecondary by mutableStateOf(backgroundSecondary)
+        private set
+    var contendPrimary by mutableStateOf(contendPrimary)
+        private set
+    var contendSecondary by mutableStateOf(contendSecondary)
+        private set
+    var contendTertiary by mutableStateOf(contendTertiary)
     private set
   var contendAccentPrimary by mutableStateOf(contendAccentPrimary)
     private set
@@ -86,17 +89,18 @@ class AppColors(
     private set
 
   fun update(other: AppColors) {
-    mainColor = other.mainColor
-    backgroundPrimary = other.backgroundPrimary
-    backgroundSecondary = other.backgroundSecondary
-    contendPrimary = other.contendPrimary
-    contendSecondary = other.contendSecondary
-    contendTertiary = other.contendTertiary
-    contendAccentPrimary = other.contendAccentPrimary
-    contendAccentSecondary = other.contendAccentSecondary
-    contendAccentTertiary = other.contendAccentTertiary
-    textPrimary = other.textPrimary
-    textSecondary = other.textSecondary
+      primaryColor = other.primaryColor
+      secondaryColor = other.secondaryColor
+      backgroundPrimary = other.backgroundPrimary
+      backgroundSecondary = other.backgroundSecondary
+      contendPrimary = other.contendPrimary
+      contendSecondary = other.contendSecondary
+      contendTertiary = other.contendTertiary
+      contendAccentPrimary = other.contendAccentPrimary
+      contendAccentSecondary = other.contendAccentSecondary
+      contendAccentTertiary = other.contendAccentTertiary
+      textPrimary = other.textPrimary
+      textSecondary = other.textSecondary
     textTertiary = other.textTertiary
     indicatorContendError = other.indicatorContendError
     indicatorContendDone = other.indicatorContendDone

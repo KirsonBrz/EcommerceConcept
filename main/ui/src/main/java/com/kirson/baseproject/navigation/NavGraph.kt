@@ -4,28 +4,38 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
-import com.kirson.baseproject.detailfeature.DetailFeatureView
-import com.kirson.baseproject.detailfeature.DetailFeatureViewModel
-import com.kirson.baseproject.mainfeature.MainFeatureView
-import com.kirson.baseproject.mainfeature.MainFeatureViewModel
+import com.kirson.baseproject.screens.cart.CartScreen
+import com.kirson.baseproject.screens.cart.CartScreenViewModel
+import com.kirson.baseproject.screens.details.DetailsScreen
+import com.kirson.baseproject.screens.details.DetailsScreenViewModel
+import com.kirson.baseproject.screens.explorer.ExplorerScreen
+import com.kirson.baseproject.screens.explorer.ExplorerScreenViewModel
 
-fun NavGraphBuilder.addMainFeatureGraph(popBackStack: () -> Unit, onPhoneDetails: () -> Unit) {
+fun NavGraphBuilder.addMainFeatureGraph(
+    popBackStack: () -> Unit,
+    onPhoneDetails: () -> Unit,
+    onCart: () -> Unit
+) {
     navigation(
         startDestination = NavTarget.Main.route,
         route = NavTarget.RootModule.route
     ) {
         composable(NavTarget.Main.route) {
 
-            val viewModel: MainFeatureViewModel = hiltViewModel()
-            MainFeatureView(viewModel, onPhoneDetails = onPhoneDetails)
+            val viewModel: ExplorerScreenViewModel = hiltViewModel()
+            ExplorerScreen(viewModel, onPhoneDetails = onPhoneDetails)
 
         }
         composable(NavTarget.Details.route) {
-            val viewModel: DetailFeatureViewModel = hiltViewModel()
-            DetailFeatureView(viewModel = viewModel)
+            val viewModel: DetailsScreenViewModel = hiltViewModel()
+            DetailsScreen(viewModel = viewModel, onBackScreen = popBackStack, onCartScreen = onCart)
         }
         composable(NavTarget.Cart.route) {
-            CartFeatureView()
+            val viewModel: CartScreenViewModel = hiltViewModel()
+            CartScreen(viewModel = viewModel, onBackScreen = popBackStack)
+        }
+        composable(NavTarget.Shopping.route) {
+            ShoppingFeatureView()
         }
         composable(NavTarget.Favourites.route) {
             FavouritesFeatureView()
@@ -34,4 +44,6 @@ fun NavGraphBuilder.addMainFeatureGraph(popBackStack: () -> Unit, onPhoneDetails
             ProfileFeatureView()
         }
     }
+
+
 }

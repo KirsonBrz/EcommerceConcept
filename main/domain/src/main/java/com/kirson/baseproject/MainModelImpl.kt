@@ -1,9 +1,10 @@
 package com.kirson.baseproject
 
 import com.kirson.baseproject.core.entity.mapDistinctNotNullChanges
-import com.kirson.baseproject.entity.APIPhoneDetails
-import com.kirson.baseproject.entity.APIPhonesList
-import com.kirson.baseproject.repository.MainRepository
+import com.kirson.baseproject.entity.CartDomainModel
+import com.kirson.baseproject.entity.PhoneDetailDomainModel
+import com.kirson.baseproject.entity.PhonesDomainModel
+import com.kirson.baseproject.mappers.toDomainModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,41 +18,80 @@ class MainModelImpl(
     private val stateFlow = MutableStateFlow(State())
 
     data class State(
-        val allPhones: APIPhonesList? = null,
-        val phoneDetails: APIPhoneDetails? = null
+        val allPhones: PhonesDomainModel? = null,
+        val phoneDetails: PhoneDetailDomainModel? = null,
+        val cart: CartDomainModel? = null
     )
 
 
-    override val allPhones: Flow<APIPhonesList>
+    override val allPhones: Flow<PhonesDomainModel>
         get() = stateFlow.mapDistinctNotNullChanges {
             it.allPhones
         }.flowOn(Dispatchers.IO)
-    override val phoneDetails: Flow<APIPhoneDetails>
+    override val phoneDetails: Flow<PhoneDetailDomainModel>
         get() = stateFlow.mapDistinctNotNullChanges {
             it.phoneDetails
         }.flowOn(Dispatchers.IO)
+    override val cart: Flow<CartDomainModel>
+        get() = stateFlow.mapDistinctNotNullChanges {
+            it.cart
+        }.flowOn(Dispatchers.IO)
 
-    override suspend fun getAllPhones(): APIPhonesList? {
-        val response = repository.getAllPhones()
-        val data = response.body()
+    override suspend fun getAllPhones(): PhonesDomainModel? {
+
+        var phones: PhonesDomainModel? = null
+
+        val data = repository.getAllPhones()
+
+        if (data != null) {
+            phones = data.toDomainModel()
+        }
+
         stateFlow.update { state ->
             state.copy(
-                allPhones = data
+                allPhones = phones
             )
         }
-        return data
+
+        return phones
     }
 
 
-    override suspend fun getPhoneDetails(): APIPhoneDetails? {
-        val response = repository.getPhoneDetails()
-        val data = response.body()
+    override suspend fun getPhoneDetails(): PhoneDetailDomainModel? {
+
+        var details: PhoneDetailDomainModel? = null
+
+        val data = repository.getPhoneDetails()
+
+        if (data != null) {
+            details = data.toDomainModel()
+        }
+
         stateFlow.update { state ->
             state.copy(
-                phoneDetails = data
+                phoneDetails = details
             )
         }
-        return data
+
+        return details
+    }
+
+    override suspend fun getCart(): CartDomainModel? {
+        var cart: CartDomainModel? = null
+
+        val data = repository.getCart()
+
+        if (data != null) {
+            cart = data.toDomainModel()
+        }
+
+        stateFlow.update { state ->
+            state.copy(
+                cart = cart
+            )
+        }
+
+        return cart
     }
 
 }

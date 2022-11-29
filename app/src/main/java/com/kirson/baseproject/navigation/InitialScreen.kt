@@ -28,17 +28,13 @@ fun InitialScreen(modifier: Modifier = Modifier, onTimeout: () -> Unit) {
         modifier = modifier.fillMaxSize()
     )
     {
-        // This will always refer to the latest onTimeout function that
-        // LandingScreen was recomposed with
+
         val currentOnTimeout by rememberUpdatedState(onTimeout)
 
-        // Create an effect that matches the lifecycle of LandingScreen.
-        // If LandingScreen recomposes or onTimeout changes,
-        // the delay shouldn't start again.
 
 
         Surface(
-            color = BaseProjectAppTheme.colors.mainColor,
+            color = BaseProjectAppTheme.colors.primaryColor,
             modifier = Modifier
                 .size(132.dp)
                 .clip(CircleShape)

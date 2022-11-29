@@ -41,25 +41,15 @@ android {
 dependencies {
 
 
-    implementation project(":main:data")
     implementation project(":core:domain")
+    implementation project(":main:data")
 
-    //Retrofit
-    implementation Deps.retrofit
-    implementation Deps.retrofitJson
-    implementation Deps.okhttp3
 
     // Hilt
     implementation Deps.implementationHilt
     kapt Deps.kaptDaggerHilt
-
-
-    // Test
-    testImplementation Deps.testImplementationJunit
-    androidTestImplementation Deps.androidTestImplementationJunit
-    androidTestImplementation Deps.androidTestImplementationEspresso
-    androidTestImplementation Deps.androidTestImplementationComposeUi
-    debugImplementation Deps.debugImplementation
+    kapt Deps.kaptDaggerHiltAndroid
+    implementation Deps.implementationHiltNavigationCompose
 
 
 }

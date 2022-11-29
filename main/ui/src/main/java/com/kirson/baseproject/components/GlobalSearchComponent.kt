@@ -65,7 +65,7 @@ internal fun GlobalSearchComponent() {
                 Icon(
                     Icons.Filled.Search,
                     contentDescription = null,
-                    tint = BaseProjectAppTheme.colors.mainColor
+                    tint = BaseProjectAppTheme.colors.primaryColor
                 )
             },
             modifier = Modifier
@@ -84,7 +84,7 @@ internal fun GlobalSearchComponent() {
             }, modifier = Modifier
                 .padding(start = 8.dp)
                 .background(
-                    color = BaseProjectAppTheme.colors.mainColor, shape = CircleShape
+                    color = BaseProjectAppTheme.colors.primaryColor, shape = CircleShape
                 )
         ) {
             Image(
@@ -98,7 +98,7 @@ internal fun GlobalSearchComponent() {
 
     Spacer(modifier = Modifier.height(10.dp))
     Surface(
-        color = BaseProjectAppTheme.colors.mainColor,
+        color = BaseProjectAppTheme.colors.primaryColor,
         modifier = Modifier
             .padding(5.dp)
 
@@ -128,7 +128,7 @@ internal fun GlobalSearchComponent() {
             if (targetExpanded) {
 
                 Surface(
-                    color = BaseProjectAppTheme.colors.mainColor,
+                    color = BaseProjectAppTheme.colors.primaryColor,
                     modifier = Modifier
                         .size(400.dp)
                         .padding(15.dp)
@@ -138,7 +138,7 @@ internal fun GlobalSearchComponent() {
                 }
             } else {
                 Surface(
-                    color = BaseProjectAppTheme.colors.mainColor,
+                    color = BaseProjectAppTheme.colors.primaryColor,
                     modifier = Modifier
                         .size(40.dp, 1.dp)
                         .padding(15.dp)
