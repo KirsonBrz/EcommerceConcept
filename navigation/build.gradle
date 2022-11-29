@@ -29,7 +29,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.kirson.baseproject.navigation'
+    namespace 'com.kirson.ecommerceconcept.navigation'
 }
 
 dependencies {

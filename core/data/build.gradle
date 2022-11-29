@@ -33,7 +33,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.3.2"
     }
-    namespace 'com.kirson.baseproject.core.data'
+    namespace 'com.kirson.ecommerceconcept.core.data'
 }
 
 dependencies {
