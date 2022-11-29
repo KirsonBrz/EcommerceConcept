@@ -1,3 +1,4 @@
+https://img.shields.io/cii/percentage/EcommerceConcept
 <h1 align="center">Hi 👋, I'm kirson</h1>
 <h3 align="center">A passionate frontend developer from Russia</h3>
 
