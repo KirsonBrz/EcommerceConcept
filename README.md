@@ -39,19 +39,19 @@ IIII
 <h2 align="left">Функционал: </h2>
 
 1) Проделана большая работа в контексте разработки приложения с использованием Android Compose, построения многомодульной архитектуры приложения
-- Основные компоненты лежат в модуле core 
-- Реализован функциональный модуль main, где происходит поиск и добавление товара в корзину
+- Основные компоненты лежат в модуле [core](https://github.com/KirsonBrz/EcommerceConcept/tree/master/core) 
+- Реализован функциональный модуль [main](https://github.com/KirsonBrz/EcommerceConcept/tree/master/main), где происходит поиск и добавление товара в корзину
 
 2) Отдельное внимание уделяется анимациям, занимающим важную роль в восприятии интерфейса пользователем, например:
 - [скрытие нижней навигации](https://github.com/KirsonBrz/EcommerceConcept/blob/master/core/ui/uikit/src/main/java/com/kirson/ecommerceconcept/components/BottomNavigationBar.kt)
 
 ![gifBottom](https://media.giphy.com/media/eMIn9D2kMMofkSNaf9/giphy.gif)
 
-- [сканер QR-кода](https://github.com/KirsonBrz/EcommerceConcept/blob/master/core/ui/uikit/src/main/java/com/kirson/ecommerceconcept/components/BottomNavigationBar.kt)
+- [сканер QR-кода на странице поиска](https://github.com/KirsonBrz/EcommerceConcept/blob/master/main/ui/src/main/java/com/kirson/ecommerceconcept/components/GlobalSearchComponent.kt)
 
 ![gifQR](https://media.giphy.com/media/8494H3ut6FSDT7yKSu/giphy.gif)
 
-- [состояние сети](https://github.com/KirsonBrz/EcommerceConcept/blob/master/core/ui/uikit/src/main/java/com/kirson/ecommerceconcept/components/BottomNavigationBar.kt)
+- [состояние сети](https://github.com/KirsonBrz/EcommerceConcept/blob/master/core/ui/uikit/src/main/java/com/kirson/ecommerceconcept/components/ConnectivityStatus.kt)
 
 ![gifNet](https://media.giphy.com/media/iyNFm4utfVpVPC6U3E/giphy.gif)
 
