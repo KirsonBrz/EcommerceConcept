@@ -6,6 +6,14 @@
 
 [Figma](https://www.figma.com/file/uBgR9MCzE8e4dca2tzuB8b/test2?node-id=0%3A1&t=yBiPYIySqOorkBCY-0)
 
+<h3 align="left">Полное превью</h3>
+
+
+
+https://user-images.githubusercontent.com/52128742/205938432-96ac2c84-df89-4df6-9877-5cbde47c5303.mp4
+
+
+
 <h1 align="left">Стэк </h1>
 
 - MVVM Clean Architecture project
@@ -58,10 +66,4 @@ IIII
 3) Навигация в приложении реализована благодаря модулю [navigation](https://github.com/KirsonBrz/EcommerceConcept/tree/master/navigation), под капотом: NavigationComponent и NavGraph от Compose
 
 4) Для иньекции зависимостей используется Hilt, но для правильной реализации модулей и чистой архитектуры необходим Dagger2 (например, интерфейс репозитория в domain слое, где мы пользуемся его методами, но не знаем их реализации)
-
-<h3 align="left">Полное превью</h3>
-
-
-
-https://user-images.githubusercontent.com/52128742/205938432-96ac2c84-df89-4df6-9877-5cbde47c5303.mp4
 
